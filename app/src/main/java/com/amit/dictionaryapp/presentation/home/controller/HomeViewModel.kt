@@ -7,12 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.amit.dictionaryapp.common.Resource
 import com.amit.dictionaryapp.domain.use_case.GetWordUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel

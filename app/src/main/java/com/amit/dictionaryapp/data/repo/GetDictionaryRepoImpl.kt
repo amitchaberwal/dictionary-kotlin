@@ -23,9 +23,9 @@ class GetDictionaryRepoImpl @Inject constructor(
             dao.deleteWords(remoteWords.map { it.word })
             dao.insertWordModels(remoteWords.map { it.toWordModel().toWordEntity() })
         } catch (e: HttpException) {
-            emit(Resource.Error<List<WordModel>>(message = "Error", data = cachedWord))
+            emit(Resource.Error<List<WordModel>>(message = "Error:${e.message}", data = cachedWord))
         } catch (e: Exception) {
-            emit(Resource.Error<List<WordModel>>(message = "Error", data = cachedWord))
+            emit(Resource.Error<List<WordModel>>(message = "Error:${e.message}", data = cachedWord))
         }
         val newWordInfo = dao.getWordInfo(word).map { it.toWordModel() }
         emit(Resource.Success<List<WordModel>>(data = newWordInfo))

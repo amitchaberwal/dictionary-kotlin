@@ -10,7 +10,7 @@ data class DefinitionDto(
     @SerializedName("definition")
     val definition: String?,
     @SerializedName("example")
-    val example: String,
+    val example: String?,
     @SerializedName("synonyms")
     val synonyms: List<Any>
 ){
