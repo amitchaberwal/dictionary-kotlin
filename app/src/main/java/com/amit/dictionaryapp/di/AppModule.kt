@@ -4,12 +4,15 @@ import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.amit.dictionaryapp.common.Constants
+import com.amit.dictionaryapp.data.local.Converters
 import com.amit.dictionaryapp.data.local.WordModelDao
 import com.amit.dictionaryapp.data.local.WordModelDatabase
 import com.amit.dictionaryapp.data.remote.GetDictionaryRemote
 import com.amit.dictionaryapp.data.repo.GetDictionaryRepoImpl
+import com.amit.dictionaryapp.data.utils.GsonParser
 import com.amit.dictionaryapp.domain.repo.GetDictionaryRepo
 import com.amit.dictionaryapp.domain.use_case.GetWordUseCase
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,7 +45,7 @@ class AppModule {
             app,
             WordModelDatabase::class.java,
             "word_db"
-        ).build()
+        ).addTypeConverter(Converters(GsonParser(Gson()))).build()
     }
 
     @Singleton
